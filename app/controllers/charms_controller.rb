@@ -1,0 +1,2 @@
+class CharmsController < ApplicationController
+end

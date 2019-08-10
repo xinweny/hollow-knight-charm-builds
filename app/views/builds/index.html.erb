@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="builds">
+    <% @builds.each do |build| %>
+      <div class="build-card">
+        <h2><%= link_to build.name, build_path(build) %></h2>
+        <% build.charms.each do |charm|
+          %>
+            <div class="build-sprites">
+              <%= image_tag charm.sprite %>
+            </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

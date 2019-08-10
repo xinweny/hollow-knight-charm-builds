@@ -1,0 +1,33 @@
+<div class="build-show-header">
+  <h2><%= @build.name %></h2>
+  <%= link_to 'Edit', edit_build_path(@build) %>
+  <%= link_to 'Delete', build_path(@build), method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
+
+<div class="build-charms d-flex">
+  <% @build.combinations.each do |combination| %>
+    <div class="build-charm">
+      <%= image_tag combination.charm.sprite.url %>
+      <%= link_to 'Delete', combination_path(combination), method: :delete, data: { confirm: 'Are you sure?'} %>
+    </div>
+  <% end %>
+</div>
+
+<div class="build-capacity d-flex">
+  <% capacity = @build.notches %>
+  <% notches = [] %>
+  <% if capacity <= 11 %>
+  <% else %>
+  <% end %>
+
+  <% notches.each do |notch| %>
+  <% end %>
+</div>
+
+<div class="description">
+  <p><em><%= @build.description %></em></p>
+</div>
+
+<div class="add-charm-form">
+  <%= render 'combinations/form' %>
+</div>

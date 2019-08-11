@@ -1,2 +1,29 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "show";
+
+h1 {
+  font-family: trajan-pro-3, serif;
+  font-variant: small-caps;
+  font-weight: 400;
+}
+
+
+h2, h3 {
+  font-family: trajan-pro-3, serif;
+  font-variant: small-caps;
+  font-weight: 400;
+}
+
+p, .gill-sans {
+  font-family: "Gill Sans", "Gill Sans MT", "Calibri", sans-serif;
+}
+
+a {
+  color: white;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+

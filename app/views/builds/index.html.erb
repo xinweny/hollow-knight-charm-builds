@@ -1,16 +1,40 @@
-<div class="container">
-  <div class="builds">
-    <% @builds.each do |build| %>
-      <div class="build-card">
-        <h2><%= link_to build.name, build_path(build) %></h2>
-        <div class="d-flex">
-          <% build.charms.each do |charm|
-            %>
-              <div class="build-sprites">
-                <%= image_tag charm.sprite.url %>
-              </div>
-          <% end %>
-        </div>
+<div class="banner d-flex flex-column align-items-center" style="background-image: url(<%= image_url 'banner' %>)">
+  <div class="banner-logo">
+    <div class="d-flex justify-content-around">
+      <%= image_tag 'banner_top', height: 25 %>
+    </div>
+    <h1 class="mx-auto text-center mb-2" id="title">Overcharmed</h1>
+    <div class="d-flex justify-content-around">
+      <%= image_tag 'banner_bottom', height: 75 %>
+    </div>
+    <div class="banner-forms d-flex justify-content-between align-items-center mx-auto">
+      <%= form_tag(builds_path, method: :get, class: 'mx-4') do %>
+        <%= text_field_tag :search, params[:search], placeholder: 'Search by build or charm', class: 'form-control search-bar' %>
+      <% end %>
+      <%= link_to 'Create a build', new_build_path, class: "create-button" %>
+    </div>
+  </div>
+</div>
+
+<div class="pt-5" style="background-color: black; height: 100vh">
+  <div class="container">
+    <% if @builds.empty? %>
+      <p>No results found :(</p>
+    <% else %>
+      <div class="build-cards">
+        <% @builds.uniq.each do |build| %>
+          <div class="build-card">
+            <h2><%= link_to build.name, build_path(build) %></h2>
+            <div class="d-flex">
+              <% build.charms.each do |charm|
+                %>
+                  <div class="build-sprites">
+                    <%= image_tag charm.sprite.url %>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>

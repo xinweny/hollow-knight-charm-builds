@@ -1,0 +1,27 @@
+.banner {
+  background-size: cover;
+  height: 100vh;
+  padding-top: 56px;
+}
+
+#title {
+  color: white;
+  font-size: 56px;
+  padding: 0;
+  margin: 0;
+}
+
+.search-bar {
+  width: 30vw;
+}
+
+.banner-forms {
+  margin-top: 60px;
+}
+
+.create-button {
+  border: 2px solid white;
+  font-size: small;
+  border-radius: 5px;
+  padding: 6px 16px;
+}

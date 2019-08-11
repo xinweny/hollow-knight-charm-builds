@@ -2,7 +2,7 @@ class BuildsController < ApplicationController
   before_action :set_build, only: %i[show edit update destroy]
 
   def index
-    @builds = Build.all
+    @builds = Build.search(params[:search])
   end
 
   def show
@@ -46,6 +46,6 @@ class BuildsController < ApplicationController
   end
 
   def build_params
-    params.require(:build).permit(:name, :description)
+    params.require(:build).permit(:name, :description, :search)
   end
 end

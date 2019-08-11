@@ -1,3 +1,5 @@
+<%= render 'layouts/navbar' %>
+
 <div class="build-show-header">
   <h2><%= @build.name %></h2>
   <%= link_to 'Edit', edit_build_path(@build) %>
@@ -43,7 +45,6 @@
 </div>
 
 <div class="charm-form">
-  <h3>Add a charm</h3>
   <% if @build.notches == 11 %>
     <p>All notches full!</p>
   <% elsif @build.overcharmed? %>

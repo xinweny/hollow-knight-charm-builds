@@ -13,4 +13,10 @@ class Build < ApplicationRecord
   def overcharmed?
     notches > 11
   end
+
+  def self.search(search)
+    return Build.all unless search
+
+    @builds = Build.joins(:combinations).joins(:charms).where('builds.name ILIKE ? OR charms.name ILIKE ?', "%#{search}%", "%#{search}%")
+  end
 end

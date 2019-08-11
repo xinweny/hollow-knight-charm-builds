@@ -6,7 +6,7 @@ class Build < ApplicationRecord
 
   def notches
     notches = 0
-    charms.each { |charm| notches << charm.notches }
+    charms.each { |charm| notches += charm.notches }
     notches
   end
 

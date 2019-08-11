@@ -11,7 +11,6 @@ class CombinationsController < ApplicationController
     if @combination.save
       redirect_to build_path(@build)
     else
-      raise
       render 'builds/show'
     end
   end

@@ -3,12 +3,14 @@
     <% @builds.each do |build| %>
       <div class="build-card">
         <h2><%= link_to build.name, build_path(build) %></h2>
-        <% build.charms.each do |charm|
-          %>
-            <div class="build-sprites">
-              <%= image_tag charm.sprite %>
-            </div>
-        <% end %>
+        <div class="d-flex">
+          <% build.charms.each do |charm|
+            %>
+              <div class="build-sprites">
+                <%= image_tag charm.sprite.url %>
+              </div>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>

@@ -1,8 +1,8 @@
 <%= simple_form_for [@build, @combination] do |f| %>
-  <%= f.input :charm_id, as: :radio_buttons, wrapper: :vertical_collection_inline, collection: Charm.all.map { |charm| ["<p>#{charm.name}</p>#{image_tag(charm.sprite.url)}".html_safe, charm.id] } %>
+  <%= f.input :charm_id, as: :radio_buttons, wrapper: :vertical_collection_inline, collection: Charm.all.map { |charm| ["#{image_tag(charm.sprite.url)}".html_safe, charm.id] } %>
   <% if @combination.id.nil? %>
-    <%= f.submit 'Add' %>
+    <%= f.submit 'Add', class: 'btn btn-primary' %>
   <% else %>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Update', class: 'btn btn-primary' %>
   <% end %>
 <% end %>

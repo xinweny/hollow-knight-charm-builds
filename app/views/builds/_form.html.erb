@@ -2,8 +2,8 @@
   <%= f.input :name %>
   <%= f.input :description %>
   <% if @build.id.nil? %>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Create', class: 'create-button' %>
   <% else %>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Update', class: 'create-button' %>
   <% end %>
 <% end %>

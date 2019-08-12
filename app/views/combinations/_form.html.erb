@@ -1,6 +1,6 @@
 <%= simple_form_for [@build, @combination] do |f| %>
   <%= f.input :charm_id, as: :radio_buttons, wrapper: :vertical_collection_inline, collection: Charm.all.map { |charm| ["#{image_tag(charm.sprite.url)}".html_safe, charm.id] } %>
     <div class="d-flex align-items-center justify-content-around">
-      <%= f.submit 'Add a charm', class: 'btn btn-primary mx-auto' %>
+      <%= f.submit 'Add a charm', class: 'add-button mb-3' %>
     </div>
 <% end %>

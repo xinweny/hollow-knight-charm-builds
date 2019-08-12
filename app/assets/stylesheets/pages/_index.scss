@@ -3,6 +3,7 @@
 @import "show";
 
 h1 {
+  color: white;
   font-family: trajan-pro-3, serif;
   font-variant: small-caps;
   font-weight: 400;
@@ -10,12 +11,14 @@ h1 {
 
 
 h2, h3 {
+  color: white;
   font-family: trajan-pro-3, serif;
   font-variant: small-caps;
   font-weight: 400;
 }
 
 p, .gill-sans {
+  color: white;
   font-family: "Gill Sans", "Gill Sans MT", "Calibri", sans-serif;
 }
 
@@ -27,3 +30,13 @@ a {
   }
 }
 
+.overcharmed {
+  color: #b570a9;
+}
+
+.overcharmed a {
+  color: #b570a9;
+  &:hover {
+    text-shadow: 0px 0px 5px #b570a9;
+  }
+}

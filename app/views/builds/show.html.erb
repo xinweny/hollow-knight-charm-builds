@@ -1,57 +1,88 @@
-<%= render 'layouts/navbar' %>
+<div style="background-image: url(<%= image_url 'background' %>); background-size: cover; min-height: 100vh; box-shadow: inset 0 0 10vw 10vw black">
+  <div class="show-header px-5 py-3">
+    <%= render 'layouts/navbar' %>
+    <div class="d-flex justify-content-around">
+      <%= image_tag 'hk_border', height: 75, class: 'mb-3' %>
+    </div>
+  </div>
 
-<div class="build-show-header">
-  <h2><%= @build.name %></h2>
-  <%= link_to 'Edit', edit_build_path(@build) %>
-  <%= link_to 'Delete', build_path(@build), method: :delete, data: { confirm: 'Are you sure?' } %>
-</div>
+  <div class="container">
+    <div class="d-flex justify-content-around">
+      <div class="build-show-header d-flex align-items-center">
+        <% if @build.overcharmed? %>
+          <h2 id="build-name" class="overcharmed"><%= @build.name %></h2>
+        <% else %>
+          <h2 id="build-name"><%= @build.name %></h2>
+        <% end %>
+        <%= link_to edit_build_path(@build) do %>
+          <i class="fas fa-feather-alt ml-3"></i>
+        <% end %>
+        <%= link_to build_path(@build), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fas fa-times ml-2"></i>
+        <% end %>
+      </div>
+    </div>
+    <div class="d-flex justify-content-around">
+        <%= image_tag 'bottom_border', height: 30, class: 'mb-3' %>
+    </div>
 
-<div class="build-charms d-flex" style="background-image: url(<%= set_background(@build.notches) %>)">
-  <% @build.combinations.each do |combination| %>
-    <div class="build-charm d-flex">
-      <%= link_to combination_path(combination), method: :delete, data: { confirm: 'Delete this charm?' } do %>
-        <%= image_tag combination.charm.sprite.url %>
+    <div class="build-charms d-inline-block mb-2" style="background-image: url(<%= set_background(@build.notches) %>)">
+      <% @build.combinations.each do |combination| %>
+          <%= link_to combination_path(combination), method: :delete, data: { confirm: 'Remove this charm?' } do %>
+            <%= image_tag combination.charm.sprite.url, class: 'build-charm' %>
+          <% end %>
       <% end %>
     </div>
-  <% end %>
-</div>
 
-<div class="build-capacity d-flex">
-  <% capacity = @build.notches %>
-  <% notches = [] %>
-  <% if capacity <= 11 %>
-    <% capacity.times { notches << 'full_notch.png' } %>
-    <% (11 - capacity).times { notches << 'empty_notch.png' } %>
-  <% else %>
-    <% 11.times { notches << 'full_notch.png' } %>
-    <% (capacity - 11).times { notches << 'overcharm_notch.png' } %>
-  <% end %>
+    <div class="build-capacity d-flex">
+      <% capacity = @build.notches %>
+      <% notches = [] %>
+      <% if capacity <= 11 %>
+        <% capacity.times { notches << 'full_notch.png' } %>
+        <% (11 - capacity).times { notches << 'empty_notch.png' } %>
+      <% else %>
+        <% 11.times { notches << 'full_notch.png' } %>
+        <% (capacity - 11).times { notches << 'overcharm_notch.png' } %>
+      <% end %>
 
-  <div class="notches d-flex justify-content-around align-items-center">
-    <% notches.each do |notch| %>
-    <div class="notch">
-      <%= image_tag notch %>
+      <div class="notches d-flex align-items-center flex-wrap mb-3">
+        <% notches.each do |notch| %>
+          <%= image_tag notch, class: 'notch' %>
+        <% end %>
+      </div>
     </div>
-    <% end %>
+
+    <div class="build-info">
+      <div class="d-flex justify-content-around mb-2">
+        <%= image_tag 'content_top', height: 40 %>
+      </div>
+      <% if @build.description == '' %>
+        <p class="text-center"><em>No description available.</em></p>
+      <% else %>
+        <p class="text-center"><em><%= @build.description %></em></p>
+      <% end %>
+      <div class="d-flex justify-content-around">
+        <%= image_tag 'content_bottom', height: 20, class: 'mb-5' %>
+      </div>
+      <h3 class="text-center" id="charm-title">Charms</h3>
+      <div class="d-flex justify-content-around">
+        <%= image_tag 'bottom_border', height: 30, class: 'mb-3' %>
+      </div>
+      <% @build.charms.each_with_index do |charm, index| %>
+        <p><%= index + 1 %>. <b><%= charm.name %></b> - <%= charm.description %></p>
+      <% end %>
+    </div>
+
+    <div class="charm-form">
+      <% if @build.notches == 11 %>
+        <p class="full-error text-center pb-3">All notches full!</p>
+      <% elsif @build.overcharmed? %>
+        <p class="overcharm-error text-center pb-3">You're overcharmed!</p>
+      <% else %>
+        <div class="add-charm-form">
+          <%= render 'combinations/form' %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
-
-<div class="build-info">
-  <p><em><%= @build.description %></em></p>
-  <h3>Charms</h3>
-  <% @build.charms.each_with_index do |charm, index| %>
-    <p><%= index + 1 %>. <%= charm.name %> - <%= charm.description %></p>
-  <% end %>
-</div>
-
-<div class="charm-form">
-  <% if @build.notches == 11 %>
-    <p>All notches full!</p>
-  <% elsif @build.overcharmed? %>
-    <p>You're overcharmed!</p>
-  <% else %>
-    <div class="add-charm-form">
-      <%= render 'combinations/form' %>
-    </div>
-  <% end %>
 </div>

@@ -2,6 +2,7 @@
   background-size: cover;
   height: 100vh;
   padding-top: 56px;
+  box-shadow: inset 0 0 10vw 8vw black;
 }
 
 #title {
@@ -16,12 +17,5 @@
 }
 
 .banner-forms {
-  margin-top: 60px;
-}
-
-.create-button {
-  border: 2px solid white;
-  font-size: small;
-  border-radius: 5px;
-  padding: 6px 16px;
+  margin-top: 30px;
 }

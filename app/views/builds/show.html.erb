@@ -26,10 +26,13 @@
         <%= image_tag 'bottom_border', height: 30, class: 'mb-3' %>
     </div>
 
-    <div class="build-charms d-inline-block mb-2" style="background-image: url(<%= set_background(@build.notches) %>)">
+    <div class="build-charms d-flex flex-wrap mb-2" style="background-image: url(<%= set_background(@build.notches) %>)">
       <% @build.combinations.each do |combination| %>
           <%= link_to combination_path(combination), method: :delete, data: { confirm: 'Remove this charm?' } do %>
-            <%= image_tag combination.charm.sprite.url, class: 'build-charm' %>
+            <div class="charm-card">
+              <p class="charm-name"><%= combination.charm.name %></p>
+              <%= image_tag combination.charm.sprite.url, class: 'build-charm' %>
+            </div>
           <% end %>
       <% end %>
     </div>
@@ -74,15 +77,21 @@
     </div>
 
     <div class="charm-form">
+      <div class="d-flex justify-content-around mt-5">
+        <%= image_tag 'content_top', height: 40 %>
+      </div>
       <% if @build.notches == 11 %>
-        <p class="full-error text-center pb-3">All notches full!</p>
+        <p class="full-error text-center">All notches full!</p>
       <% elsif @build.overcharmed? %>
-        <p class="overcharm-error text-center pb-3">You're overcharmed!</p>
+        <p class="overcharm-error text-center">You're overcharmed!</p>
       <% else %>
         <div class="add-charm-form">
           <%= render 'combinations/form' %>
         </div>
       <% end %>
+      <div class="d-flex justify-content-around">
+        <%= image_tag 'content_bottom', height: 20, class: 'mb-3' %>
+      </div>
     </div>
   </div>
 </div>

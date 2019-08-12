@@ -1,5 +1,24 @@
 .build-card {
   width: 300px;
-  h2 {
+}
+
+.charm-card {
+  position: relative;
+  transition: 0.3s;
+  &:hover {
+    .charm-name {
+      visibility: visible;
+    }
   }
+}
+
+.charm-name {
+  text-shadow: 1px 1px 8px rgba(0,0,0,1);
+  position: absolute;
+  line-height: 1;
+  text-align: center;
+  visibility: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

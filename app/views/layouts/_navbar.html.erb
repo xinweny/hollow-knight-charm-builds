@@ -1,9 +1,12 @@
-<div class="header d-flex justify-content-between align-items-center">
+<div class="header d-flex justify-content-between align-items-center mb-3">
   <h1><%= link_to 'Overcharmed', builds_path %></h1>
   <div class="d-flex align-items-center justify-content-between">
   <%= form_tag(builds_path, method: :get, class: 'mx-4') do %>
-    <%= text_field_tag :search, params[:search], placeholder: 'Search by build or charm', class: 'form-control search-bar' %>
+    <%= text_field_tag :search, params[:search], placeholder: 'Search by build or charm', class: 'form-control search-bar navbar-search' %>
   <% end %>
-  <%= link_to 'Create a build', new_build_path, class: "create-button" %>
+  <%= link_to 'Create a build', new_build_path, class: 'button d-none d-md-block' %>
+  <%= link_to new_build_path, class: 'd-block d-md-none' do %>
+    <%= image_tag 'salubra_add', width: 50 %>
+  <% end %>
   </div>
 </div>

@@ -8,11 +8,11 @@
       <%= image_tag 'banner_bottom', height: 75, class: 'mb-4' %>
     </div>
     <p class="text-center"><em>A collection of Hollow Knight charm builds for any situation.</em></p>
-    <div class="banner-forms d-flex justify-content-between align-items-center mx-auto">
+    <div class="banner-forms mx-auto">
       <%= form_tag(builds_path, method: :get, class: 'mx-2') do %>
-        <%= text_field_tag :search, params[:search], placeholder: 'Search by build or charm', class: 'form-control search-bar' %>
+        <%= text_field_tag :search, params[:search], placeholder: 'Search by build or charm', class: 'form-control search-bar mr-2' %>
       <% end %>
-      <%= link_to 'Create a build', new_build_path, class: "create-button" %>
+      <%= link_to 'Create a build', new_build_path, class: "button banner-button" %>
     </div>
   </div>
 </div>
@@ -24,11 +24,11 @@
 
   <div class="container">
     <% if @builds.empty? %>
-      <p class="text-center">No results found :(</p>
+      <p class="text-center">No builds found :(</p>
     <% else %>
       <div class="build-cards d-flex flex-wrap justify-content-around">
         <% @builds.uniq.each do |build| %>
-          <div class="build-card">
+          <div class="build-card mb-3">
             <div class="d-flex justify-content-around"><%= image_tag 'king_header', width: 300 %></div>
             <% if build.overcharmed? %>
               <h2 class="text-center overcharmed"><%= link_to build.name, build_path(build) %></h2>
@@ -39,7 +39,8 @@
             <div class="d-flex justify-content-around flex-wrap">
               <% build.charms.each do |charm|
                 %>
-                  <div class="build-sprites">
+                  <div class="build-sprites charm-card">
+                    <p class="charm-name"><%= charm.name %></p>
                     <%= image_tag charm.sprite.url %>
                   </div>
               <% end %>

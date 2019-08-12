@@ -18,4 +18,22 @@
 
 .banner-forms {
   margin-top: 30px;
+  display: flex;
+  align-items: center;
+}
+
+@media(max-width: 1000px) {
+  .banner-forms {
+    margin-top: 150px;
+  }
+}
+
+@media(max-width: 576px) {
+  .banner-forms {
+    flex-direction: column;
+    margin-top: 0;
+  }
+  .banner-button {
+    margin-top: 16px;
+  }
 }

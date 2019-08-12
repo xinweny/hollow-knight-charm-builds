@@ -1,5 +1,5 @@
 class CharmsController < ApplicationController
   def index
-    @charms = Charms.all
+    @charms = Charm.all
   end
 end

@@ -7,7 +7,7 @@
     <div class="d-flex justify-content-around">
       <%= image_tag 'banner_bottom', height: 75, class: 'mb-4' %>
     </div>
-    <p class="text-center"><em>A collection of Hollow Knight charm builds for any situation.</em></p>
+    <p class="text-center"><em>A collection of Hollow Knight <%= link_to 'charm', charms_path %> builds for any situation.</em></p>
     <div class="banner-forms mx-auto">
       <%= form_tag(builds_path, method: :get, class: 'mx-2') do %>
         <%= text_field_tag :search, params[:search], placeholder: 'Search by build or charm', class: 'form-control search-bar mr-2' %>

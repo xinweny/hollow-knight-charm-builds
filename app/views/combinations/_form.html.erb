@@ -1,5 +1,7 @@
+<% valid_charms = Charm.all.reject { |charm| charm.name == 'Void Heart'} %>
+
 <%= simple_form_for [@build, @combination] do |f| %>
-  <%= f.input :charm_id, as: :radio_buttons, wrapper: :vertical_collection_inline, collection: Charm.all.map { |charm| ["<div class='charm-card'><p class='charm-name'>#{charm.name}</p>#{image_tag(charm.sprite.url)}</div>".html_safe, charm.id] } %>
+  <%= f.input_field :charm_id, as: :radio_buttons, wrapper: :vertical_collection_inline, collection: valid_charms.map { |charm| ["<div class='charm-card'><p class='charm-name'>#{charm.name}</p>#{image_tag(charm.sprite.url)}</div>".html_safe, charm.id] } %>
   <div class="d-flex align-items-center justify-content-around">
     <%= f.submit 'Add charm', class: 'mb-3 button' %>
   </div>

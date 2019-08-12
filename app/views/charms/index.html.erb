@@ -1,0 +1,47 @@
+<div class="background" style="background-image: url(<%= image_url 'background' %>)">
+  <%= render 'layouts/navbar' %>
+
+  <div class="charms-header">
+    <h2 class="text-center">Charms</h2>
+    <div class="d-flex justify-content-around">
+      <%= image_tag 'bottom_border', height: 30, class: 'mb-3' %>
+    </div>
+    <div class="d-flex justify-content-around">
+      <%= image_tag 'charm', height: 250, class: 'mb-3' %>
+    </div>
+  </div>
+
+  <div class="container pb-4">
+    <div class="d-flex justify-content-around mb-3">
+      <%= image_tag 'content_top', height: 50 %>
+    </div>
+    <table class="charms-table">
+      <tr>
+        <th><p class="text-center">Charm</p></th>
+        <th><p class="text-center">Name & Effect</p></th>
+        <th><p class="text-center">Notches</p></th>
+      </tr>
+      <% @charms.each do |charm| %>
+        <tr>
+          <td class="table-sprite"><div class="text-center"><%= image_tag charm.sprite.url %></div></td>
+          <td class="table-details">
+            <p>
+              <b><%= charm.name %></b><br>
+              <em><%= charm.description %></em>
+            </p>
+          </td>
+          <td class="table-notches">
+            <div class="text-center">
+              <% charm.notches.times do %>
+                <%= image_tag 'full_notch', width: 20 %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <div class="d-flex justify-content-around">
+      <%= image_tag 'content_bottom', height: 30, class: 'my-3' %>
+    </div>
+  </div>
+</div>

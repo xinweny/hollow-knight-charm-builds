@@ -22,3 +22,10 @@ a {
 img {
   max-width: 100%;
 }
+
+.background {
+  background-size: 100% 100%;
+  min-height: 100vh;
+  box-shadow: inset 0 0 10vw 10vw black;
+  background-attachment: fixed;
+}

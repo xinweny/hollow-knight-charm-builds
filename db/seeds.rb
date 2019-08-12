@@ -204,6 +204,11 @@ charm_details = [{
   name: 'Grimmchild',
   notches: 2,
   description: "Worn by those who take part in the Grimm Troupe's Ritual. The bearer must seek the Grimmkin and collect their flames. Uncollected flames will appear on the bearer's map."
+},
+{
+  name: 'Void Heart',
+  notches: 0,
+  description: "An emptiness that was hidden within, now unconstrained. Unifies the void under the bearer's will. This charm is a part of its bearer and can not be unequipped."
 }]
 
 charm_details.each do |detail|
@@ -212,3 +217,27 @@ charm_details.each do |detail|
   charm.sprite = Pathname.new(Rails.root.join("app/assets/images/charms/#{file_name}")).open
   charm.save!
 end
+
+build = Build.new(name: 'Paladin', description: "Long range, quick hits and therefore really high damage, especially with the Pure Nail upgrade, staying quite safe away from the enemies, collecting enough Soul and being able to heal fast. Good 'quality' build for many bosses and the Colosseum of Fools. Changing Quick Focus to Fragile Strength is an option to rely more on offense and dodging.")
+build.charms = [Charm.find_by_name('Quick Slash'), Charm.find_by_name('Mark of Pride'), Charm.find_by_name('Quick Focus'), Charm.find_by_name('Soul Catcher')]
+build.save!
+
+build = Build.new(name: 'Lifeblood Galore', description: "22 Lifeblood Masks – don't let your memes be dreams!")
+build.charms = [Charm.find_by_name('Unbreakable Heart'), Charm.find_by_name('Lifeblood Heart'), Charm.find_by_name('Lifeblood Core'), Charm.find_by_name("Joni's Blessing")]
+build.save!
+
+build = Build.new(name: 'Battle Mage', description: "Hitting any enemy once with your Nail gives enough Soul to cast a very strong spell.")
+build.charms = [Charm.find_by_name('Soul Eater'), Charm.find_by_name('Soul Catcher'), Charm.find_by_name('Spell Twister'), Charm.find_by_name('Shaman Stone')]
+build.save!
+
+build = Build.new(name: 'Ninja', description: "Deal damage to enemies by dashing through them, even more when you fail to and at last when you're healing. You're a ninja, you live in the shadows and fight with all the tricks that you've got. (Only works with the Shade Cloak upgrade.)")
+build.charms = [Charm.find_by_name('Sharp Shadow'), Charm.find_by_name('Sprintmaster'), Charm.find_by_name('Dashmaster'), Charm.find_by_name('Soul Catcher')]
+build.save!
+
+build = Build.new(name: 'Warlock', description: "Attack your enemies from afar with Spells, beams of light and really aggressive Weaverlings. A very defensive, quite passive build, focused on staying back and keeping your distance to all enemies. The included secret Charm combination \"Insect Song\" will always give you enough Soul to heal. Both Dreamshield or Grubberfly's Elegy could either be replaced by Quick Focus, depending on personal preferences.")
+build.charms = [Charm.find_by_name('Dreamshield'), Charm.find_by_name('Dream Wielder'), Charm.find_by_name("Grubberfly's Elegy"), Charm.find_by_name('Grubsong'), Charm.find_by_name('Weaversong'), Charm.find_by_name('Sprintmaster')]
+build.save!
+
+build = Build.new(name: 'Priest', description: "Focused on being protected during quick heals and even dogding while doing so for maximum safety. Can be combined with Spore Shroom or even the secret Charm combination Stink Bomb to deal damage while Focusing.")
+build.charms = [Charm.find_by_name('Quick Focus'), Charm.find_by_name('Shape of Unn'), Charm.find_by_name('Grubsong'), Charm.find_by_name('Stalwart Shell'), Charm.find_by_name('Baldur Shell')]
+build.save!

@@ -1,0 +1,38 @@
+table, th, td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  vertical-align: middle;
+}
+
+table {
+  p {
+    margin: 0;
+  }
+}
+
+.table-sprite, .table-details {
+  padding-right: 32px;
+}
+
+.table-sprite {
+  padding-left: 16px;
+  img {
+    max-width: none;
+  }
+}
+
+.table-notches {
+  padding-right: 16px;
+}
+
+td, th {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+th {
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+td {
+  background-color: rgba(0, 0, 0, 0.3)
+}

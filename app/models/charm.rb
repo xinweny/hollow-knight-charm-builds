@@ -1,7 +1,7 @@
 class Charm < ApplicationRecord
   mount_uploader :sprite, SpriteUploader
 
-  has_many :combinations, dependent: :destroy
+  has_many :combinations
   has_many :builds, through: :combinations
 
   validates :name, presence: true

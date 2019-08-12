@@ -1,5 +1,5 @@
 class Build < ApplicationRecord
-  has_many :combinations
+  has_many :combinations, dependent: :destroy
   has_many :charms, through: :combinations
 
   validates :name, presence: true, uniqueness: true
